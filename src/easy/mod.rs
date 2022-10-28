@@ -7,3 +7,6 @@ pub mod p20_valid_parentheses;
 pub mod p21_merge_two_sorted_lists;
 pub mod p26_remove_duplicates_from_sorted_array;
 pub mod p58_length_of_last_word;
+pub mod p66_plus_one;
+pub mod p67_add_binary;
+pub mod p69_sqrt_x;

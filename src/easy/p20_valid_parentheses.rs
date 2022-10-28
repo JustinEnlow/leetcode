@@ -7,15 +7,20 @@
 //         1 <= s.length <= 104
 //         s consists of parentheses only '()[]{}'.
 
-pub fn valid_parentheses(input: &str) -> bool{
-    for (i, char) in input.chars().enumerate(){
+
+
+
+
+// leetcode specified function signature
+pub fn is_valid(s: String) -> bool {
+    for (i, char) in s.chars().enumerate(){
         if i == 0{
             if char == '}' || char == ']' || char == ')'{
                 return false;
             }
         }
 
-        let next_char = match input.chars().nth(i.saturating_add(1)){
+        let next_char = match s.chars().nth(i.saturating_add(1)){
             Some(val) => {val},
             None => {'\0'},
         };
@@ -34,8 +39,13 @@ pub fn valid_parentheses(input: &str) -> bool{
         }
     }    
     
-    true
+    true    
 }
+
+
+
+// more generic function signature. same exact code
+// pub fn is_valid(s: &str) -> bool{}
 
 
 
@@ -46,8 +56,8 @@ pub fn valid_parentheses(input: &str) -> bool{
 //    Output: true
 #[test]
 fn ex_1(){
-    let s = "()";
-    assert!(valid_parentheses(s) == true);
+    let s = "()".to_string();
+    assert!(is_valid(s) == true);
 }
 
 // Example 2:
@@ -55,8 +65,8 @@ fn ex_1(){
 //    Output: true
 #[test]
 fn ex_2(){
-    let s = "()[]{}";
-    assert!(valid_parentheses(s) == true);
+    let s = "()[]{}".to_string();
+    assert!(is_valid(s) == true);
 }
 
 // Example 3:
@@ -64,6 +74,6 @@ fn ex_2(){
 //    Output: false
 #[test]
 fn ex_3(){
-    let s = "(]";
-    assert!(valid_parentheses(s) == false);
+    let s = "(]".to_string();
+    assert!(is_valid(s) == false);
 }

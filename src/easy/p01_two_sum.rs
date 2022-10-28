@@ -1,105 +1,103 @@
+// Given an array of integers nums and an integer target, return indices of the 
+// two numbers such that they add up to target. You may assume that each input 
+// would have exactly one solution, and you may not use the same element twice.
+// You can return the answer in any order.
+
+// Constraints:
+//     2 <= nums.length <= 104
+//     -109 <= nums[i] <= 109
+//     -109 <= target <= 109
+//     Only one valid answer exists.
+
+
 use std::collections::HashMap;
 
-pub fn two_sum(nums: &[i32], target: i32) -> Option<(usize, usize)>{
-    //solution_one(nums, target)
-    //solution_two(nums, target)
-    //solution_three(nums, target)
-    solution_four(nums, target)
-}
+pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+    ///////////////////////// Solution 1 //////////////////////////////////////
+    //let mut vec = Vec::new();
+    //
+    //for i in 0..nums.len(){
+    //    for j in i+1..nums.len(){
+    //        if nums[i] + nums[j] == target{
+    //            vec.push(i as i32);
+    //            vec.push(j as i32);
+    //        }
+    //    }
+    //}
+    //
+    //vec
+    ///////////////////////////////////////////////////////////////////////////
+    
 
 
-
-// brute force. checking all values more than once
-pub fn solution_one(nums: &[i32], target: i32) -> Option<(usize, usize)>{
-    for (i, &outer_val) in nums.iter().enumerate(){
-        for (j, &inner_val) in nums.iter().enumerate(){
-            if i == j{
-                continue
-            }
-            if outer_val + inner_val == target{
-                return Some((i, j));
-            }
-        }
-    }
-    None
-}
-
-pub fn solution_two(nums: &[i32], target: i32) -> Option<(usize, usize)>{
-    for i in 0..nums.len(){
-        for j in i+1..nums.len(){
-            if nums[i] + nums[j] == target{
-                return Some((i, j));
-            }
-        }
-    }
-    None
-}
-
-pub fn solution_three(nums: &[i32], target: i32) -> Option<(usize, usize)>{
+    ///////////////////////// Solution 2 //////////////////////////////////////
     let mut hashmap = HashMap::new();
-    for (i, &val) in nums.iter().enumerate(){
-        hashmap.insert(val, i);
-    }
-
-    for (i, &val) in nums.iter().enumerate(){
-        let remainder = target - val;
-        match hashmap.get(&remainder){
-            Some(&j) => {
-                if i != j{
-                    return Some((i, j))
-                }
-            },
-            None => continue
-        }
-    }
-    None
-}
-
-pub fn solution_four(nums: &[i32], target: i32) -> Option<(usize, usize)>{
-    let mut hashmap = HashMap::new();
+    let mut vec = Vec::new();
     
     for (i, &val) in nums.iter().enumerate(){
         let remainder = target - val;
         match hashmap.get(&remainder){
             Some(&j) => {
-                return Some((j, i))
+                vec.push(j as i32);
+                vec.push(i as i32);
             },
             None => {}
         }
         hashmap.insert(val, i);
     }
     
-    None
+    vec
+    ///////////////////////////////////////////////////////////////////////////
 }
 
 
 
 
 
+fn _do_test(nums: &[i32], target: i32, expected: &[i32]){
+    let result = two_sum(nums.to_vec(), target);
+    assert!(
+        result == expected,
+        "\ninput = {nums:?} and {target:?}, Expected = {expected:?} but got {result:?}\n"
+    );
+}
+
+// Example 1:
+//     Input: nums = [2,7,11,15], target = 9
+//     Output: [0,1]
+//     Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 #[test]
 fn ex_1(){
-    let nums = [2, 7, 11, 15];
-    let target = 9;
-    assert!(Some((0, 1)) == two_sum(&nums, target));
+    //let nums = Vec::from([2, 7, 11, 15]);
+    //let target = 9;
+    //let result = two_sum(nums, target);
+    //let expected = Vec::from([0, 1]);
+    //assert!(result == expected);
+    _do_test(&[2, 7, 11, 15], 9, &[0, 1]);
 }
 
+// Example 2:
+//     Input: nums = [3,2,4], target = 6
+//     Output: [1,2]
 #[test]
 fn ex_2(){
-    let nums = [3, 2, 4];
-    let target = 6;
-    assert!(Some((1, 2)) == two_sum(&nums, target));
+    //let nums = Vec::from([3, 2, 4]);
+    //let target = 6;
+    //let result = two_sum(nums, target);
+    //let expected = Vec::from([1, 2]);
+    //assert!(result == expected);
+    _do_test(&[3, 2, 4], 6, &[1, 2]);
 }
 
+// Example 3:
+//     Input: nums = [3,3], target = 6
+//     Output: [0,1]
 #[test]
 fn ex_3(){
-    let nums = [3, 3];
-    let target = 6;
-    assert!(Some((0, 1)) == two_sum(&nums, target));
-}
-
-#[test]
-fn my_example(){
-    let nums = [1, 2, 3];
-    let target = 7;
-    assert!(None == two_sum(&nums, target));
+    //let nums = Vec::from([3, 3]);
+    //let target = 6;
+    //let result = two_sum(nums, target);
+    //let expected = Vec::from([0, 1]);
+    //assert!(result == expected);
+    _do_test(&[3, 3], 6, &[0, 1]);
 }

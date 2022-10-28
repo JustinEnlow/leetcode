@@ -1,23 +1,22 @@
 // Given an integer x, return true if x is palindrome integer.
 //    An integer is a palindrome when it reads the same backward as forward.
 //    For example, 121 is a palindrome while 123 is not.
-//
+
 //    Constraints:
 //        -231 <= x <= 231 - 1
 
-pub fn palindrome_number(input: i32) -> bool{
-    let stringified_input = input.to_string();
-    //let mut reversed_input = String::new();
-    //for c in stringified_input.chars().rev(){
-    //    reversed_input.push(c)
-    //}
+
+
+
+pub fn is_palindrome(x: i32) -> bool {
+    let stringified_input = x.to_string();
     let reversed_input: String = stringified_input.chars().rev().collect();
 
     if stringified_input == reversed_input{
         return true;
     }
 
-    false
+    false    
 }
 
 
@@ -29,7 +28,7 @@ pub fn palindrome_number(input: i32) -> bool{
 #[test]
 fn ex_1(){
     let x = 121;
-    assert!(palindrome_number(x) == true);    
+    assert!(is_palindrome(x) == true);
 }
 
 //Example 2:
@@ -39,7 +38,7 @@ fn ex_1(){
 #[test]
 fn ex_2(){
     let x = -121;
-    assert!(palindrome_number(x) == false);
+    assert!(is_palindrome(x) == false);
 }
 
 //Example 3:
@@ -49,5 +48,5 @@ fn ex_2(){
 #[test]
 fn ex_3(){
     let x = 10;
-    assert!(palindrome_number(x) == false);
+    assert!(is_palindrome(x) == false);
 }

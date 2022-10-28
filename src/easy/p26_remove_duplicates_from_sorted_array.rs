@@ -26,11 +26,13 @@
 //    -100 <= nums[i] <= 100
 //    nums is sorted in non-decreasing order.
 
-pub fn remove_duplicates_from_sorted_array(input: &[i32]) -> (usize, &[i32]){
-    //
-    //input.swap()
 
-    (100, input)
+
+
+
+// leetcode specified function signature
+pub fn remove_duplicates(_nums: &mut Vec<i32>) -> i32 {
+    0
 }
 
 
@@ -44,12 +46,8 @@ pub fn remove_duplicates_from_sorted_array(input: &[i32]) -> (usize, &[i32]){
     //It does not matter what you leave beyond the returned k (hence they are underscores).
 #[test]
 fn ex_1(){
-    let nums = [1, 1, 2];
-    let (k, result_arr) = remove_duplicates_from_sorted_array(&nums);
-    assert!(k == 2);
-    assert!(result_arr[0] == 1);
-    assert!(result_arr[1] == 2);
-    // idk how to check other array indices...
+    let mut nums = Vec::from([1, 1, 2]);
+    assert!(remove_duplicates(&mut nums) == 2);
 }
 
 // Example 2:
@@ -59,13 +57,6 @@ fn ex_1(){
     //It does not matter what you leave beyond the returned k (hence they are underscores).
 #[test]
 fn ex_2(){
-    let nums = [0,0,1,1,1,2,2,3,3,4];
-    let (k, result_arr) = remove_duplicates_from_sorted_array(&nums);
-    assert!(k == 5);
-    assert!(result_arr[0] == 0);
-    assert!(result_arr[0] == 1);
-    assert!(result_arr[0] == 2);
-    assert!(result_arr[0] == 3);
-    assert!(result_arr[0] == 4);
-    // idk how to check the other array indices...
+    let mut nums = Vec::from([0,0,1,1,1,2,2,3,3,4]);
+    assert!(remove_duplicates(&mut nums) == 5);
 }

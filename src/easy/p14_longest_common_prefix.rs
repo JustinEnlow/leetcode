@@ -6,6 +6,18 @@
 //         0 <= strs[i].length <= 200
 //         strs[i] consists of only lowercase English letters.
 
+
+
+
+
+// leetcode specified function signature
+//pub fn longest_common_prefix(strs: Vec<String>) -> String {
+//        
+//}
+
+
+
+// more generic function signature
 pub fn longest_common_prefix(input: &[&str]) -> /*Option<String>*/String{     // is Option<String> preferrable here?
     // determine shortest word
     

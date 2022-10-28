@@ -28,19 +28,22 @@
 //         s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 //         It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 
-pub fn roman_to_integer(input: &str) -> i32{
+
+
+/// desired function signature as defined by leetcode
+pub fn roman_to_int(s: String) -> i32 {
     let mut nums: Vec<i32> = Vec::new();
 
     let mut consume_next = false;
 
-    for (i, char) in input.chars().enumerate(){
+    for (i, char) in s.chars().enumerate(){
         if consume_next{
             consume_next = false;
         }
         else{
             match char{
                 'I' => {
-                    match input.chars().nth(i.saturating_add(1)){
+                    match s.chars().nth(i.saturating_add(1)){
                         Some(val) => {
                             match val{
                                 'V' => {
@@ -59,7 +62,7 @@ pub fn roman_to_integer(input: &str) -> i32{
                 },
                 'V' => nums.push(5),
                 'X' => {
-                    match input.chars().nth(i.saturating_add(1)){
+                    match s.chars().nth(i.saturating_add(1)){
                         Some(val) => {
                             match val{
                                 'L' => {
@@ -78,7 +81,7 @@ pub fn roman_to_integer(input: &str) -> i32{
                 },
                 'L' => nums.push(50),
                 'C' => {
-                    match input.chars().nth(i.saturating_add(1)){
+                    match s.chars().nth(i.saturating_add(1)){
                         Some(val) => {
                             match val{
                                 'D' => {
@@ -121,6 +124,12 @@ pub fn roman_to_integer(input: &str) -> i32{
 
 
 
+// proposed better function signature. more generalized
+// all function code remains the same
+// pub fn roman_to_integer(x: &str) -> i32{}
+
+
+
 
 
 //Example 1:
@@ -129,8 +138,9 @@ pub fn roman_to_integer(input: &str) -> i32{
 //    Explanation: III = 3.
 #[test]
 fn ex_1(){
-    let s = "III";
-    assert!(roman_to_integer(s) == 3);
+    let s = String::from("III");
+    //assert!(roman_to_integer(&s) == 3);
+    assert!(roman_to_int(s) == 3);
 }
 
 //Example 2:
@@ -139,8 +149,9 @@ fn ex_1(){
 //    Explanation: L = 50, V= 5, III = 3.
 #[test]
 fn ex_2(){
-    let s = "LVIII";
-    assert!(roman_to_integer(s) == 58);
+    let s = String::from("LVIII");
+    //assert!(roman_to_integer(&s) == 58);
+    assert!(roman_to_int(s) == 58);
 }
 
 //Example 3:
@@ -149,6 +160,7 @@ fn ex_2(){
 //    Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 #[test]
 fn ex_3(){
-    let s = "MCMXCIV";
-    assert!(roman_to_integer(s) == 1994);
+    let s = String::from("MCMXCIV");
+    //assert!(roman_to_integer(&s) == 1994);
+    assert!(roman_to_int(s) == 1994);
 }
