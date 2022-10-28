@@ -8,10 +8,20 @@
 
 
 
-pub fn my_sqrt(_x: i32) -> i32 {
+pub fn my_sqrt(x: i32) -> i32 {
     //let idk = x as f64;
     //idk.sqrt() as i32
     // can't use built in function
+
+    for i in 2..i32::max_value(){   //0 and 1 can be left out because they dont square
+        if i * i == x{
+            return i;
+        }
+        else if i * i > x{
+            return i - 1;
+        }
+    }
+
     0
 }
 

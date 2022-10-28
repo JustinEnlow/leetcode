@@ -30,6 +30,8 @@
 
 
 
+
+
 /// desired function signature as defined by leetcode
 pub fn roman_to_int(s: String) -> i32 {
     let mut nums: Vec<i32> = Vec::new();
@@ -132,15 +134,21 @@ pub fn roman_to_int(s: String) -> i32 {
 
 
 
+fn _do_test(s: &str, expected: i32){
+    let result = roman_to_int(s.to_string());
+    assert!(
+        result == expected,
+        "\ninput = {s:?}, Expected = {expected:?} but got {result:?}\n"
+    );
+}
+
 //Example 1:
 //    Input: s = "III"
 //    Output: 3
 //    Explanation: III = 3.
 #[test]
 fn ex_1(){
-    let s = String::from("III");
-    //assert!(roman_to_integer(&s) == 3);
-    assert!(roman_to_int(s) == 3);
+    _do_test("III", 3);
 }
 
 //Example 2:
@@ -149,9 +157,7 @@ fn ex_1(){
 //    Explanation: L = 50, V= 5, III = 3.
 #[test]
 fn ex_2(){
-    let s = String::from("LVIII");
-    //assert!(roman_to_integer(&s) == 58);
-    assert!(roman_to_int(s) == 58);
+    _do_test("LVIII", 58);
 }
 
 //Example 3:
@@ -160,7 +166,5 @@ fn ex_2(){
 //    Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 #[test]
 fn ex_3(){
-    let s = String::from("MCMXCIV");
-    //assert!(roman_to_integer(&s) == 1994);
-    assert!(roman_to_int(s) == 1994);
+    _do_test("MCMXCIV", 1994);
 }

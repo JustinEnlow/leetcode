@@ -48,6 +48,14 @@ pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {
 
 
 
+fn _do_test(digits: &[i32], expected: &[i32]){
+    let result = plus_one(digits.to_vec());
+    assert!(
+        result == expected,
+        "\ninput = {digits:?}, Expected = {expected:?} but got {result:?}\n"
+    )
+}
+
 // Example 1:
 //     Input: digits = [1,2,3]
 //     Output: [1,2,4]
@@ -56,9 +64,7 @@ pub fn plus_one(digits: Vec<i32>) -> Vec<i32> {
 //     Thus, the result should be [1,2,4].
 #[test]
 fn ex_1(){
-    let digits = Vec::from([1, 2, 3]);
-    let expected = Vec::from([1, 2, 4]);
-    assert!(plus_one(digits) == expected);
+    _do_test(&[1, 2, 3], &[1, 2, 4]);
 }
 
 // Example 2:
@@ -69,9 +75,7 @@ fn ex_1(){
 //     Thus, the result should be [4,3,2,2].
 #[test]
 fn ex_2(){
-    let digits = Vec::from([4, 3, 2, 1]);
-    let expected = Vec::from([4, 3, 2, 2]);
-    assert!(plus_one(digits) == expected);
+    _do_test(&[4, 3, 2, 1], &[4, 3, 2, 2]);
 }
 
 // Example 3:
@@ -82,9 +86,7 @@ fn ex_2(){
 //     Thus, the result should be [1,0].
 #[test]
 fn ex_3(){
-    let digits = Vec::from([9]);
-    let expected = Vec::from([1, 0]);
-    assert!(plus_one(digits) == expected);
+    _do_test(&[9], &[1, 0]);
 }
 
 // these tests don't cover all reasonable use cases for plus one

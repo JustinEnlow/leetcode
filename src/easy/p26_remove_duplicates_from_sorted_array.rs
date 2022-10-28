@@ -39,6 +39,15 @@ pub fn remove_duplicates(_nums: &mut Vec<i32>) -> i32 {
 
 
 
+fn _do_test(nums: &[i32], expected: i32){
+    let mut vec_nums = nums.to_vec();
+    let result = remove_duplicates(&mut vec_nums);
+    assert!(
+        result == expected,
+        "\ninput = {nums:?}, Expected = {expected:?} but got {result:?}\n"
+    )
+}
+
 // Example 1:
     //Input: nums = [1,1,2]
     //Output: 2, nums = [1,2,_]
@@ -46,8 +55,7 @@ pub fn remove_duplicates(_nums: &mut Vec<i32>) -> i32 {
     //It does not matter what you leave beyond the returned k (hence they are underscores).
 #[test]
 fn ex_1(){
-    let mut nums = Vec::from([1, 1, 2]);
-    assert!(remove_duplicates(&mut nums) == 2);
+    _do_test(&[1, 1, 2], 2);
 }
 
 // Example 2:
@@ -57,6 +65,5 @@ fn ex_1(){
     //It does not matter what you leave beyond the returned k (hence they are underscores).
 #[test]
 fn ex_2(){
-    let mut nums = Vec::from([0,0,1,1,1,2,2,3,3,4]);
-    assert!(remove_duplicates(&mut nums) == 5);
+    _do_test(&[0, 0, 1, 1, 1, 2, 2, 3, 3, 4], 5);
 }

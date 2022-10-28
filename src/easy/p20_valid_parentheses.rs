@@ -51,13 +51,20 @@ pub fn is_valid(s: String) -> bool {
 
 
 
+fn _do_test(s: &str, expected: bool){
+    let result = is_valid(s.to_string());
+    assert!(
+        result == expected,
+        "\ninput = {s:?}, Expected = {expected:?} but got {result:?}\n"
+    );
+}
+
 // Example 1:
 //    Input: s = "()"
 //    Output: true
 #[test]
 fn ex_1(){
-    let s = "()".to_string();
-    assert!(is_valid(s) == true);
+    _do_test("()", true);
 }
 
 // Example 2:
@@ -65,8 +72,7 @@ fn ex_1(){
 //    Output: true
 #[test]
 fn ex_2(){
-    let s = "()[]{}".to_string();
-    assert!(is_valid(s) == true);
+    _do_test("()[]{})", true);
 }
 
 // Example 3:
@@ -74,6 +80,5 @@ fn ex_2(){
 //    Output: false
 #[test]
 fn ex_3(){
-    let s = "(]".to_string();
-    assert!(is_valid(s) == false);
+    _do_test("(]", false);
 }

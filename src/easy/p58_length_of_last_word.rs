@@ -6,19 +6,41 @@
 //    s consists of only English letters and spaces ' '.
 //    There will be at least one word in s.
 
-pub fn length_of_last_word(input: &str) -> usize{
-    for (i, word) in input.split_whitespace().rev().enumerate(){
+
+
+
+
+pub fn length_of_last_word(s: String) -> i32 {
+    for (i, word) in s.split_whitespace().rev().enumerate(){
         if i == 0{
-            return word.len()
+            return word.len() as i32
         }
     }
 
-    0
+    0    
 }
 
+//pub fn length_of_last_word(input: &str) -> usize{
+//    for (i, word) in input.split_whitespace().rev().enumerate(){
+//        if i == 0{
+//            return word.len()
+//        }
+//    }
+//
+//    0
+//}
 
 
 
+
+
+fn _do_test(s: &str, expected: i32){
+    let result = length_of_last_word(s.to_string());
+    assert!(
+        result == expected,
+        "\ninput = {s:?}, Expected = {expected:?} but got {result:?}\n"
+    )
+}
 
 // Example 1:
 //     Input: s = "Hello World"
@@ -26,8 +48,7 @@ pub fn length_of_last_word(input: &str) -> usize{
 //     Explanation: The last word is "World" with length 5.
 #[test]
 fn ex_1() {
-    let s = "Hello World";
-    assert!(5 == length_of_last_word(s));
+    _do_test("Hello World", 5);
 }
 
 // Example 2:
@@ -36,8 +57,7 @@ fn ex_1() {
 //     Explanation: The last word is "moon" with length 4.
 #[test]
 fn ex_2(){
-    let s = "   fly me   to   the moon  ";
-    assert!(4 == length_of_last_word(s));
+    _do_test("   fly me   to   the moon  ", 4);
 }
 
 // Example 3:
@@ -46,6 +66,5 @@ fn ex_2(){
 //     Explanation: The last word is "joyboy" with length 6.
 #[test]
 fn ex_3(){
-    let s = "luffy is still joyboy";
-    assert!(6 == length_of_last_word(s));
+    _do_test("luffy is still joyboy", 6);
 }

@@ -68,11 +68,6 @@ fn _do_test(nums: &[i32], target: i32, expected: &[i32]){
 //     Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 #[test]
 fn ex_1(){
-    //let nums = Vec::from([2, 7, 11, 15]);
-    //let target = 9;
-    //let result = two_sum(nums, target);
-    //let expected = Vec::from([0, 1]);
-    //assert!(result == expected);
     _do_test(&[2, 7, 11, 15], 9, &[0, 1]);
 }
 
@@ -81,11 +76,6 @@ fn ex_1(){
 //     Output: [1,2]
 #[test]
 fn ex_2(){
-    //let nums = Vec::from([3, 2, 4]);
-    //let target = 6;
-    //let result = two_sum(nums, target);
-    //let expected = Vec::from([1, 2]);
-    //assert!(result == expected);
     _do_test(&[3, 2, 4], 6, &[1, 2]);
 }
 
@@ -94,10 +84,5 @@ fn ex_2(){
 //     Output: [0,1]
 #[test]
 fn ex_3(){
-    //let nums = Vec::from([3, 3]);
-    //let target = 6;
-    //let result = two_sum(nums, target);
-    //let expected = Vec::from([0, 1]);
-    //assert!(result == expected);
     _do_test(&[3, 3], 6, &[0, 1]);
 }
