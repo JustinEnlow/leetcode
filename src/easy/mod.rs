@@ -10,3 +10,4 @@ pub mod p58_length_of_last_word;
 pub mod p66_plus_one;
 pub mod p67_add_binary;
 pub mod p69_sqrt_x;
+pub mod p70_climbing_stairs;

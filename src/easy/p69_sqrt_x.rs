@@ -29,28 +29,25 @@ pub fn my_sqrt(x: i32) -> i32 {
 
 
 
-fn _do_test(x: i32, expected: i32){
+fn _do_test(example: &str, x: i32, expected: i32){
     let result = my_sqrt(x);
     assert!(
         result == expected,
-        "\ninput = {x:?} Expected = {expected:?} but got {result:?}\n"
+        "\n{example:?}: input = {x:?} Expected = {expected:?} but got {result:?}\n"
     );
 }
 
-//Example 1:
-//    Input: x = 4
-//    Output: 2
-//    Explanation: The square root of 4 is 2, so we return 2.
 #[test]
-fn ex_1(){
-    _do_test(4, 2);
-}
+fn tests(){
+    //Example 1:
+    //    Input: x = 4
+    //    Output: 2
+    //    Explanation: The square root of 4 is 2, so we return 2.
+    _do_test("ex_1", 4, 2);
 
-//Example 2:
-//    Input: x = 8
-//    Output: 2
-//    Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
-#[test]
-fn ex_2(){
-    _do_test(8, 2);
+    //Example 2:
+    //    Input: x = 8
+    //    Output: 2
+    //    Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
+    _do_test("ex_2", 8, 2);
 }

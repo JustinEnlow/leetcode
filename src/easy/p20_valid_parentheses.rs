@@ -51,34 +51,28 @@ pub fn is_valid(s: String) -> bool {
 
 
 
-fn _do_test(s: &str, expected: bool){
+fn _do_test(example: &str, s: &str, expected: bool){
     let result = is_valid(s.to_string());
     assert!(
         result == expected,
-        "\ninput = {s:?}, Expected = {expected:?} but got {result:?}\n"
+        "\n{example:?}: input = {s:?}, Expected = {expected:?} but got {result:?}\n"
     );
 }
 
-// Example 1:
-//    Input: s = "()"
-//    Output: true
 #[test]
-fn ex_1(){
-    _do_test("()", true);
-}
+fn tests(){
+    // Example 1:
+    //    Input: s = "()"
+    //    Output: true
+    _do_test("ex_1", "()", true);
 
-// Example 2:
-//    Input: s = "()[]{}"
-//    Output: true
-#[test]
-fn ex_2(){
-    _do_test("()[]{})", true);
-}
+    // Example 2:
+    //    Input: s = "()[]{}"
+    //    Output: true
+    _do_test("ex_2", "()[]{})", true);
 
-// Example 3:
-//    Input: s = "(]"
-//    Output: false
-#[test]
-fn ex_3(){
-    _do_test("(]", false);
+    // Example 3:
+    //    Input: s = "(]"
+    //    Output: false
+    _do_test("ex_3", "(]", false);
 }

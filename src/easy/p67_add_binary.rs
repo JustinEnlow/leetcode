@@ -33,26 +33,24 @@ pub fn add_binary(a: String, b: String) -> String {
 
 
 
-fn _do_test(a: &str, b: &str, expected: &str){
+fn _do_test(example: &str, a: &str, b: &str, expected: &str){
     let result = add_binary(a.to_string(), b.to_string());
     let expected = expected.to_string();
     assert!(
         result == expected,
-        "\ninput = {a:?} and {b:?}, Expected = {expected:?} but got {result:?}\n"
+        "\n{example:?}: input = {a:?} and {b:?}, Expected = {expected:?} but got {result:?}\n"
     );
 }
-//Example 1:
-//    Input: a = "11", b = "1"
-//    Output: "100"
-#[test]
-fn ex_1(){
-    _do_test("11", "1", "100");
-}
 
-//Example 2:
-//    Input: a = "1010", b = "1011"
-//    Output: "10101"
 #[test]
-fn ex_2(){
-    _do_test("1010", "1011", "10101");
+fn tests(){
+    //Example 1:
+    //    Input: a = "11", b = "1"
+    //    Output: "100"
+    _do_test("ex_1", "11", "1", "100");
+
+    //Example 2:
+    //    Input: a = "1010", b = "1011"
+    //    Output: "10101"
+    _do_test("ex_2", "1010", "1011", "10101");
 }

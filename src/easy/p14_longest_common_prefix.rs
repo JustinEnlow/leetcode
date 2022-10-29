@@ -11,36 +11,18 @@
 
 
 // leetcode specified function signature
-//pub fn longest_common_prefix(strs: Vec<String>) -> String {
-//        
-//}
-
-
-
-// more generic function signature
-pub fn longest_common_prefix(input: &[&str]) -> /*Option<String>*/String{     // is Option<String> preferrable here?
-    // determine shortest word
-    
-    // for each letter in all words, if the letter at that index is the same, add to longest_prefix_string
-    // if first letter of any word is different, we can return early
-
-    // if end of shortest word is reached, and all letters match, return shortest word as longest_prefix_string
-    
-    let mut shortest_word = "";
-    for &word in input{
+pub fn longest_common_prefix(strs: Vec<String>) -> String {
+    let mut shortest_word = String::new();
+    for word in &strs{
         if shortest_word == ""{
-            shortest_word = word;
+            shortest_word = word.to_string();
         }
         else{
             if word.len() < shortest_word.len(){
-                shortest_word = word
+                shortest_word = word.to_string()
             }
         }
     }
-
-    // debug
-    println!("{}", shortest_word);
-    //
 
     let mut should_quit = false;
     let mut last_index_reached = 0;
@@ -48,13 +30,12 @@ pub fn longest_common_prefix(input: &[&str]) -> /*Option<String>*/String{     //
     for i in 0..shortest_word.len(){
         if should_quit == true{ break }
 
-        for &word in input{
+        for word in &strs{
             if word.chars().nth(i).unwrap() == shortest_word.chars().nth(i).unwrap(){
                 last_index_reached = i.saturating_sub(1);
             }else{
                 if i == 0{
                     return "".to_string();
-                    //return None;
                 }
                 else{
                     should_quit = true
@@ -66,32 +47,39 @@ pub fn longest_common_prefix(input: &[&str]) -> /*Option<String>*/String{     //
     let shortest_word_as_string = String::from(shortest_word);
     let longest_prefix_string = &shortest_word_as_string[0..=last_index_reached];
 
-    // debug
-    println!("{}", longest_prefix_string);
-    //
-
-    /*Some(*/longest_prefix_string.to_string()//)
+    longest_prefix_string.to_string()
 }
 
 
 
 
 
-// Example 1:
-//    Input: strs = ["flower","flow","flight"]
-//    Output: "fl"
-#[test]
-fn ex_1(){
-    let strs = ["flower", "flow", "flight"];
-    assert!(longest_common_prefix(&strs)/*.unwrap()*/ == "fl".to_string());
+fn _do_test(example: &str, strs: &[String], expected: &str){
+    let result = longest_common_prefix(strs.to_vec());
+    assert!(
+        result == expected,
+        "\n{example:?}: input = {strs:?}, Expected = {expected:?} but got {result:?}\n"
+    );
 }
 
-// Example 2:
-//    Input: strs = ["dog","racecar","car"]
-//    Output: ""
-//    Explanation: There is no common prefix among the input strings.
 #[test]
-fn ex_2(){
-    let strs = ["dog", "racecar", "car"];
-    assert!(longest_common_prefix(&strs) == /*None*/"".to_string());
+fn tests(){
+    // Example 1:
+    //    Input: strs = ["flower","flow","flight"]
+    //    Output: "fl"
+    _do_test(
+        "ex_1",
+        &["flower".to_string(), "flow".to_string(), "flight".to_string()], 
+        "fl"
+    );
+
+    // Example 2:
+    //    Input: strs = ["dog","racecar","car"]
+    //    Output: ""
+    //    Explanation: There is no common prefix among the input strings.
+    _do_test(
+        "ex_2",
+        &["dog".to_string(), "racecar".to_string(), "car".to_string()], 
+        ""
+    );
 }

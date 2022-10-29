@@ -59,6 +59,17 @@ pub fn merge_two_sorted_lists(list1: LinkedList<i32>, mut list2: LinkedList<i32>
 
 
 
+fn _do_test(){
+
+}
+
+#[test]
+fn tests(){
+
+}
+
+
+
     // Example 1:
     //    Input: list1 = [1,2,4], list2 = [1,3,4]
     //    Output: [1,1,2,3,4,4]

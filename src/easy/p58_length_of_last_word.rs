@@ -34,37 +34,31 @@ pub fn length_of_last_word(s: String) -> i32 {
 
 
 
-fn _do_test(s: &str, expected: i32){
+fn _do_test(example: &str, s: &str, expected: i32){
     let result = length_of_last_word(s.to_string());
     assert!(
         result == expected,
-        "\ninput = {s:?}, Expected = {expected:?} but got {result:?}\n"
+        "\n{example:?}: input = {s:?}, Expected = {expected:?} but got {result:?}\n"
     )
 }
 
-// Example 1:
-//     Input: s = "Hello World"
-//     Output: 5
-//     Explanation: The last word is "World" with length 5.
 #[test]
-fn ex_1() {
-    _do_test("Hello World", 5);
-}
+fn tests(){
+    // Example 1:
+    //     Input: s = "Hello World"
+    //     Output: 5
+    //     Explanation: The last word is "World" with length 5.
+    _do_test("ex_1", "Hello World", 5);
 
-// Example 2:
-//     Input: s = "   fly me   to   the moon  "
-//     Output: 4
-//     Explanation: The last word is "moon" with length 4.
-#[test]
-fn ex_2(){
-    _do_test("   fly me   to   the moon  ", 4);
-}
+    // Example 2:
+    //     Input: s = "   fly me   to   the moon  "
+    //     Output: 4
+    //     Explanation: The last word is "moon" with length 4.
+    _do_test("ex_2", "   fly me   to   the moon  ", 4);
 
-// Example 3:
-//     Input: s = "luffy is still joyboy"
-//     Output: 6
-//     Explanation: The last word is "joyboy" with length 6.
-#[test]
-fn ex_3(){
-    _do_test("luffy is still joyboy", 6);
+    // Example 3:
+    //     Input: s = "luffy is still joyboy"
+    //     Output: 6
+    //     Explanation: The last word is "joyboy" with length 6.
+    _do_test("ex_3", "luffy is still joyboy", 6);
 }

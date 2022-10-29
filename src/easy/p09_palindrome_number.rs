@@ -24,31 +24,31 @@ pub fn is_palindrome(x: i32) -> bool {
 
 
 
-fn _do_test(x: i32, expected: bool){
+fn _do_test(example: &str, x: i32, expected: bool){
     let result = is_palindrome(x);
     assert!(
         result == expected,
-        "\ninput = {x:?}, Expected = {expected:?} but got {result:?}\n"
+        "\n{example:?}: input = {x:?}, Expected = {expected:?} but got {result:?}\n"
     )
 }
 
-//Example 1:
-//    Input: x = 121
-//    Output: true
-//    Explanation: 121 reads as 121 from left to right and from right to left.
 #[test]
-fn ex_1(){_do_test(121, true);}
-
-//Example 2:
-//    Input: x = -121
-//    Output: false
-//    Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
-#[test]
-fn ex_2(){_do_test(-121, false);}
-
-//Example 3:
-//    Input: x = 10
-//    Output: false
-//    Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
-#[test]
-fn ex_3(){_do_test(10, false);}
+fn tests(){
+    //Example 1:
+    //    Input: x = 121
+    //    Output: true
+    //    Explanation: 121 reads as 121 from left to right and from right to left.
+    _do_test("ex_1", 121, true);
+    
+    //Example 2:
+    //    Input: x = -121
+    //    Output: false
+    //    Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.    
+    _do_test("ex_2", -121, false);
+    
+    //Example 3:
+    //    Input: x = 10
+    //    Output: false
+    //    Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+    _do_test("ex_3", 10, false);
+}

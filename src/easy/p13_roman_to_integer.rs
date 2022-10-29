@@ -134,37 +134,31 @@ pub fn roman_to_int(s: String) -> i32 {
 
 
 
-fn _do_test(s: &str, expected: i32){
+fn _do_test(example: &str, s: &str, expected: i32){
     let result = roman_to_int(s.to_string());
     assert!(
         result == expected,
-        "\ninput = {s:?}, Expected = {expected:?} but got {result:?}\n"
+        "\n{example:?}: input = {s:?}, Expected = {expected:?} but got {result:?}\n"
     );
 }
 
-//Example 1:
-//    Input: s = "III"
-//    Output: 3
-//    Explanation: III = 3.
 #[test]
-fn ex_1(){
-    _do_test("III", 3);
-}
+fn tests(){
+    //Example 1:
+    //    Input: s = "III"
+    //    Output: 3
+    //    Explanation: III = 3.
+    _do_test("ex_1", "III", 3);
 
-//Example 2:
-//    Input: s = "LVIII"
-//    Output: 58
-//    Explanation: L = 50, V= 5, III = 3.
-#[test]
-fn ex_2(){
-    _do_test("LVIII", 58);
-}
+    //Example 2:
+    //    Input: s = "LVIII"
+    //    Output: 58
+    //    Explanation: L = 50, V= 5, III = 3.
+    _do_test("ex_2", "LVIII", 58);
 
-//Example 3:
-//    Input: s = "MCMXCIV"
-//    Output: 1994
-//    Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
-#[test]
-fn ex_3(){
-    _do_test("MCMXCIV", 1994);
+    //Example 3:
+    //    Input: s = "MCMXCIV"
+    //    Output: 1994
+    //    Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+    _do_test("ex_3", "MCMXCIV", 1994);
 }
