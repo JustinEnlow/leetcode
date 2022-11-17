@@ -13,33 +13,58 @@
 
 // leetcode specified function signature
 pub fn is_valid(s: String) -> bool {
-    for (i, char) in s.chars().enumerate(){
-        if i == 0{
-            if char == '}' || char == ']' || char == ')'{
-                return false;
-            }
-        }
+    //for (i, char) in s.chars().enumerate(){
+    //    if i == 0{
+    //        if char == '}' || char == ']' || char == ')'{
+    //            return false;
+    //        }
+    //    }
+    //
+    //    let next_char = match s.chars().nth(i.saturating_add(1)){
+    //        Some(val) => {val},
+    //        None => {'\0'},
+    //    };
+    //
+    //    match char{
+    //        '{' => {
+    //            if next_char != '}'{ return false; }
+    //        },
+    //        '[' => {
+    //            if next_char != ']'{ return false; }
+    //        },
+    //        '(' => {
+    //            if next_char != ')'{ return false; }
+    //        },
+    //        _ => {},
+    //    }
+    //}    
+    //
+    //true
 
-        let next_char = match s.chars().nth(i.saturating_add(1)){
-            Some(val) => {val},
-            None => {'\0'},
-        };
-
-        match char{
-            '{' => {
-                if next_char != '}'{ return false; }
-            },
-            '[' => {
-                if next_char != ']'{ return false; }
-            },
-            '(' => {
-                if next_char != ')'{ return false; }
-            },
-            _ => {},
-        }
-    }    
+    ///////////////////////////////////////////////////////////////////////////
     
-    true    
+    let mut stack = Vec::new();
+
+    for char in s.chars(){
+        match char{
+            '{' => stack.push('}'),
+            '(' => stack.push(')'),
+            '[' => stack.push(']'),
+            '}' | ')' | ']' => {
+                match stack.pop(){
+                    None => return false,
+                    Some(val) => {
+                        if val != char{
+                            return false;
+                        }
+                    }
+                }
+            },
+            _ => {}
+        }
+    }
+
+    stack.is_empty()
 }
 
 
@@ -61,18 +86,12 @@ fn _do_test(example: &str, s: &str, expected: bool){
 
 #[test]
 fn tests(){
-    // Example 1:
-    //    Input: s = "()"
-    //    Output: true
+    // Example 1: Input: s = "()", Output: true
     _do_test("ex_1", "()", true);
 
-    // Example 2:
-    //    Input: s = "()[]{}"
-    //    Output: true
-    _do_test("ex_2", "()[]{})", true);
+    // Example 2: Input: s = "()[]{}", Output: true
+    _do_test("ex_2", "()[]{}", true);
 
-    // Example 3:
-    //    Input: s = "(]"
-    //    Output: false
+    // Example 3: Input: s = "(]", Output: false
     _do_test("ex_3", "(]", false);
 }

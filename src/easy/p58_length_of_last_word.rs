@@ -20,16 +20,6 @@ pub fn length_of_last_word(s: String) -> i32 {
     0    
 }
 
-//pub fn length_of_last_word(input: &str) -> usize{
-//    for (i, word) in input.split_whitespace().rev().enumerate(){
-//        if i == 0{
-//            return word.len()
-//        }
-//    }
-//
-//    0
-//}
-
 
 
 

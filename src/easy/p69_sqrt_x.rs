@@ -39,15 +39,11 @@ fn _do_test(example: &str, x: i32, expected: i32){
 
 #[test]
 fn tests(){
-    //Example 1:
-    //    Input: x = 4
-    //    Output: 2
+    //Example 1: Input: x = 4, Output: 2
     //    Explanation: The square root of 4 is 2, so we return 2.
     _do_test("ex_1", 4, 2);
 
-    //Example 2:
-    //    Input: x = 8
-    //    Output: 2
+    //Example 2: Input: x = 8, Output: 2
     //    Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
     _do_test("ex_2", 8, 2);
 }

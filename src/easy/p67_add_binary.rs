@@ -44,13 +44,9 @@ fn _do_test(example: &str, a: &str, b: &str, expected: &str){
 
 #[test]
 fn tests(){
-    //Example 1:
-    //    Input: a = "11", b = "1"
-    //    Output: "100"
+    //Example 1: Input: a = "11", b = "1", Output: "100"
     _do_test("ex_1", "11", "1", "100");
 
-    //Example 2:
-    //    Input: a = "1010", b = "1011"
-    //    Output: "10101"
+    //Example 2: Input: a = "1010", b = "1011", Output: "10101"
     _do_test("ex_2", "1010", "1011", "10101");
 }

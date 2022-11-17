@@ -1,11 +1,42 @@
 // You are given the heads of two sorted linked lists list1 and list2.
-//     Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
-//     Return the head of the merged linked list.
+// Merge the two lists in a one sorted list. The list should be made by 
+// splicing together the nodes of the first two lists.
+// Return the head of the merged linked list.
 // 
-//     Constraints:
-//         The number of nodes in both lists is in the range [0, 50].
-//         -100 <= Node.val <= 100
-//         Both list1 and list2 are sorted in non-decreasing order.
+// Constraints:
+//     The number of nodes in both lists is in the range [0, 50].
+//     -100 <= Node.val <= 100
+//     Both list1 and list2 are sorted in non-decreasing order.
+
+
+
+
+
+// leetcode defined function signature
+
+// Definition for singly-linked list.
+// #[derive(PartialEq, Eq, Clone, Debug)]
+// pub struct ListNode {
+//   pub val: i32,
+//   pub next: Option<Box<ListNode>>
+// }
+// 
+// impl ListNode {
+//   #[inline]
+//   fn new(val: i32) -> Self {
+//     ListNode {
+//       next: None,
+//       val
+//     }
+//   }
+// }
+//pub fn merge_two_lists(list1: Option<Box<ListNode>>, list2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+//
+//}
+
+
+
+
 
 use std::collections::LinkedList;
 
@@ -21,7 +52,7 @@ pub fn merge_two_sorted_lists(list1: LinkedList<i32>, mut list2: LinkedList<i32>
                 };
             
                 // debug
-                println!("val1: {}, val2: {}", val1, val2);
+                //println!("val1: {}, val2: {}", val1, val2);
                 //
             
                 if val1 > val2{
@@ -47,9 +78,9 @@ pub fn merge_two_sorted_lists(list1: LinkedList<i32>, mut list2: LinkedList<i32>
     }
 
     // debug
-    for val in result_list.iter(){
-        println!("result: {}", val);
-    }
+    //for val in result_list.iter(){
+    //    println!("result: {}", val);
+    //}
     //
 
     result_list
@@ -59,69 +90,22 @@ pub fn merge_two_sorted_lists(list1: LinkedList<i32>, mut list2: LinkedList<i32>
 
 
 
-fn _do_test(){
-
+fn _do_test(example: &str, list1: LinkedList<i32>, list2: LinkedList<i32>, expected: LinkedList<i32>){
+    let result = merge_two_sorted_lists(list1.clone(), list2.clone());
+    assert!(
+        result == expected,
+        "\n{example:?}: Input = {list1:?} and {list2:?}, expected {expected:?} but got {result:?}\n"
+    )
 }
 
 #[test]
 fn tests(){
+    // Example 1: Input: list1 = [1,2,4], list2 = [1,3,4], Output: [1,1,2,3,4,4]
+    _do_test("ex_1", LinkedList::from([1, 2, 4]), LinkedList::from([1, 3, 4]), LinkedList::from([1, 1, 2, 3, 4, 4]));
 
+    // Example 2: Input: list1 = [], list2 = [], Output: []
+    _do_test("ex_2", LinkedList::from([]), LinkedList::from([]), LinkedList::from([]));
+
+    // Example 3: Input: list1 = [], list2 = [0], Output: [0]
+    _do_test("ex_3", LinkedList::from([]), LinkedList::from([0]), LinkedList::from([0]));
 }
-
-
-
-    // Example 1:
-    //    Input: list1 = [1,2,4], list2 = [1,3,4]
-    //    Output: [1,1,2,3,4,4]
-    #[test]
-    fn ex_1(){
-        let mut list1 = LinkedList::new();
-        list1.push_back(1);
-        list1.push_back(2);
-        list1.push_back(4);
-
-        let mut list2 = LinkedList::new();
-        list2.push_back(1);
-        list2.push_back(3);
-        list2.push_back(4);
-
-        let mut result = merge_two_sorted_lists(list1, list2);
-
-        assert!(result.pop_front().unwrap() == 1);
-        assert!(result.pop_front().unwrap() == 1);
-        assert!(result.pop_front().unwrap() == 2);
-        assert!(result.pop_front().unwrap() == 3);
-        assert!(result.pop_front().unwrap() == 4);
-        assert!(result.pop_front().unwrap() == 4);
-        // 
-        assert!(result.pop_front().is_none());
-    }
-
-    // Example 2:
-    //    Input: list1 = [], list2 = []
-    //    Output: []
-    #[test]
-    fn ex_2(){
-        let list1 = LinkedList::new();
-
-        let list2 = LinkedList::new();
-
-        assert!(merge_two_sorted_lists(list1, list2).pop_front().is_none());
-    }
-
-    // Example 3:
-    //    Input: list1 = [], list2 = [0]
-    //    Output: [0]
-    #[test]
-    fn ex_3(){
-        let list1 = LinkedList::new();
-
-        let mut list2 = LinkedList::new();
-        list2.push_back(0);
-
-        let mut result = merge_two_sorted_lists(list1, list2);
-
-        assert!(result.pop_front().unwrap() == 0);
-        //
-        assert!(result.pop_front().is_none());
-    }
